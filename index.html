@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+	<title>{{.Title}}</title>
+  <link href="/static/css.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div id="container">
+
+		<header>
+			<div id="title"><a href="/">{{.Title}}</a></div>
+		</header>
+		<div id="content">
+
+			{{range $Post := .Posts}}
+				<article>
+					{{if $Post.Date}}<span class="date">{{$Post.Date}}</span>{{end}}
+					{{if $Post.Title}}<span class="articleTitle">{{$Post.Title}}</span>{{end}}
+					{{if $Post.ID}}<span class="articleLink"><a href="/?id={{$Post.ID}}">#</a></span>{{end}}
+					<span class="articleText">
+						{{$Post.Text}}
+					</span>
+				</article>
+			{{end}}
+		</div>
+		<footer>
+			<span class="link"><a href="/?p=about">About</a></span>
+			<span class="link"><a href="/?p=impress">Impress</a></span>
+		</footer>
+	</div>
+</body>
+</html>
